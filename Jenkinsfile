@@ -42,7 +42,7 @@ pipeline {
 
         stage('Deploy web server') {
             steps {
-                ansiblePlaybook credentialsId: 'ansible2', 
+                ansiblePlaybook credentialsId: 'simone2', 
                 disableHostKeyChecking: true, 
                 installation: 'ansible2', 
                 inventory: './ansible/inventory', 
