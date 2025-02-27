@@ -46,7 +46,7 @@ pipeline {
                 disableHostKeyChecking: true, 
                 installation: 'ansible2', 
                 inventory: './ansible/inventory', 
-                playbook: './ansible/playbooks/ansible.yml', 
+                playbook: './ansible/playbooks/ansible.yaml', 
                 vaultTmpPath: ''
                 // extras: "-t api_server -e DJANGO_IMAGE_VERSION=${env.TAG_NAME}"
             }
