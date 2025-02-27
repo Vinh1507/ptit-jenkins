@@ -47,7 +47,7 @@ pipeline {
                 installation: 'my-ansible', 
                 inventory: './ansible/inventory', 
                 playbook: './ansible/playbooks/ansible.yml', 
-                vaultTmpPath: '',
+                vaultTmpPath: ''
                 // extras: "-t api_server -e DJANGO_IMAGE_VERSION=${env.TAG_NAME}"
             }
         }
