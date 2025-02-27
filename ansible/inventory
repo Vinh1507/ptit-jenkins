@@ -1,4 +1,2 @@
-192.168.144.150 ansible_user=vinhbh1
-
-[web]
-192.168.144.150 ansible_user=vinhbh1
+; 192.168.144.150 ansible_user=vinhbh1
+192.168.144.129 ansible_user=vinhbh2

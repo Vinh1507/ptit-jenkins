@@ -1,14 +1,14 @@
 
-- name: Check if docker-compose.yml exists
-  stat:
-    path: /ptit-backend/flask-api/docker-compose.yml
-  register: compose_file
+# - name: Check if docker-compose.yml exists
+#   stat:
+#     path: /ptit-backend/flask-api/docker-compose.yml
+#   register: compose_file
 
 - name: Run Docker Compose Down
   shell: sudo docker compose down
   args:
     chdir: /ptit-backend/flask-api
-  when: compose_file.stat.exists
+  # when: compose_file.stat.exists
   
 - name: Remove ptit-backend directory
   file:
