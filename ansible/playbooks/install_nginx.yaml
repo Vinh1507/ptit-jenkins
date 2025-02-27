@@ -1,0 +1,21 @@
+- name: Cài đặt Nginx trên máy chủ từ xa
+  hosts: web
+  become: true  # Chạy với quyền sudo
+
+  tasks:
+    - name: Cập nhật danh sách package (chỉ với Debian/Ubuntu)
+      apt:
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
+    - name: Cài đặt Nginx (Debian/Ubuntu)
+      apt:
+        name: nginx
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: Cài đặt Nginx (RHEL/CentOS)
+      yum:
+        name: nginx
+        state: present
+      when: ansible_os_family == "RedHat"

@@ -33,10 +33,22 @@ pipeline {
 
         stage('Push to Docker Hub') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'dockerhub-acc', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+                withCredentials([usernamePassword(credentialsId: 'docker-acc', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
                     sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
                 }
                 sh "docker push ${IMAGE_NAME}"
+            }
+        }
+
+        stage('Deploy web server') {
+            steps {
+                ansiblePlaybook credentialsId: 'ansible-key', 
+                disableHostKeyChecking: true, 
+                installation: 'my-ansible', 
+                inventory: './ansible/inventory', 
+                playbook: './ansible/playbooks/ansible.yml', 
+                vaultTmpPath: '',
+                // extras: "-t api_server -e DJANGO_IMAGE_VERSION=${env.TAG_NAME}"
             }
         }
     }

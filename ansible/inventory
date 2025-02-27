@@ -1,0 +1,4 @@
+192.168.144.150 ansible_user=vinhbh1
+
+[web]
+192.168.144.150 ansible_user=vinhbh1
